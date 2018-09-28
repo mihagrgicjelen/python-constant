@@ -113,21 +113,3 @@ class Constant(object):
             raise Exception(
                 'Probably no get_all() or get_title() '
                 'implemented for %s (%s)' % (cls, e))
-
-
-class Foo(Constant):
-    ONE = 'one'
-
-    _titles = {
-        ONE: 'Onefa'
-    }
-
-
-class Two(Constant):
-    ONE = 'one'
-
-    _titles = {
-        ONE: 'Onefa'
-    }
-
-print(Foo.get_safe_json_dict())
