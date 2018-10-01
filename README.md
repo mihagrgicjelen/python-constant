@@ -62,10 +62,11 @@ jet = Aircraft(
 
 ```
 
-# Use-cases
+# Use-cases / examples
 
 
 ## Backend validation
+
 
 ```python
 
@@ -81,6 +82,7 @@ class AircraftCreate(View):
 ```
 
 ## Terminal select
+[Terminal select example](examples/terminal_select.py)
 
 ```python
 for i, a_type in enumerate(AircraftType().get_all()):
