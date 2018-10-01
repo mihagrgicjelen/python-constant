@@ -1,15 +1,5 @@
-# python-constant
-General purpose Constant class for Python apps
-
-
-```python
 from py_constant import Constant
 
-class Aircraft():
-
-    def __init__(brand, model, type):
-        pass
-        ...
 
 class AircraftType(Constant):
     GLIDER = 'glider'
@@ -38,43 +28,6 @@ class AircraftType(Constant):
     }
 
 
-class AircraftPartCategory(Constant):
-    EXTERIOR = 'exterior'
-    INTERIOR = 'interior'
-    ENGINE = 'engine'
-    ELECTRONICS = 'electronics'
-    HYDRAULICS = 'hydraulics'
-
-
-helicopter = Aircraft(
-    brand='Sikorsky',
-    model='MH-60 Seahawk',
-    type=AircraftType.ROTORCRAFT
-)
-
-jet = Aircraft(
-    brand='Boeing',
-    model='777-300',
-    type=AircraftType.PASSENGER_JET
-)
-
-```
-
-
-```python
-
-class AircraftCreate(View):
-
-    def post(self, request, *args, **kwargs):
-
-        if request.POST['aircraft_type'] not in AircraftType.get_all():
-            raise ValueError('Invalid aircraft type "%s". Should be one of "%s"' % (
-                request.POST['aircraft_type'], AircraftType.get_all()))
-        ...            
-
-```
-
-```python
 for i, a_type in enumerate(AircraftType().get_all()):
     print('#%s - %s' % (i, AircraftType.get_title(a_type)))
 
@@ -93,11 +46,3 @@ print('\nSelected index: %s' % aircraft_type_inx)
 print('Selected AircraftType value: %s' % aircraft_type_value)
 print('Selected AircraftType title: %s' % aircraft_type_title)
 print('Selected AircraftType description: %s' % aircraft_type_description)
-
-# Selected index: 1
-# Selected AircraftType value: rotorcraft
-# Selected AircraftType title: Rotorcraft
-# Selected AircraftType description: Aircrafts which have (usually) two rotors, keeping them in the air, a.k.a helicopters
-```
-
-
