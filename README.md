@@ -2,6 +2,8 @@
 General purpose Constant class for Python apps
 
 
+# Usage / definition
+
 ```python
 from py_constant import Constant
 
@@ -60,6 +62,10 @@ jet = Aircraft(
 
 ```
 
+# Use-cases
+
+
+## Backend validation
 
 ```python
 
@@ -74,6 +80,8 @@ class AircraftCreate(View):
 
 ```
 
+## Terminal select
+
 ```python
 for i, a_type in enumerate(AircraftType().get_all()):
     print('#%s - %s' % (i, AircraftType.get_title(a_type)))
@@ -84,6 +92,7 @@ for i, a_type in enumerate(AircraftType().get_all()):
 #3 - Passenger jet
 #4 - Military aircraft
 #5 - Glider
+# Select aircraft type (by index):  1
 
 aircraft_type_inx = int(raw_input('Select aircraft type (by index):  '))
 aircraft_type_value = AircraftType.get_all()[aircraft_type_inx]
