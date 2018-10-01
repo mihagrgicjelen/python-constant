@@ -1,0 +1,19 @@
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        
+        <form method="POST">
+            <label>Select aircraft type:</label>
+            <select name='aircraft_type'>
+                <option value=''></option>
+                {% for atype in aircrafy_type_opts %}
+                    <option value='{{atype.value}}'>{{atype.label}}</option>
+                {% endfor %}
+            </select>
+            <input type='submit' value='Submit'>
+        </form>
+    </body>
+</html>

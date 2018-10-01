@@ -95,13 +95,13 @@ class Constant(object):
         return json.dumps(cls.get_safe_json_dict())
 
     @classmethod
-    def to_select_options(cls, prepend_string='', alphabetic_order=False):
+    def to_select_options(cls, prepend_string='', alphabetic_order=False, value_key='value', title_key='label'):
         # transforms constant class get_all() results to the structure
         # sutable for <select ng-options...
         try:
             opts = [{
-                'label': u'%s%s' % (prepend_string, cls.get_title(x)),
-                'value': x
+                title_key: u'%s%s' % (prepend_string, cls.get_title(x)),
+                value_key: x
             } for x in cls.get_all()]
 
             if alphabetic_order:

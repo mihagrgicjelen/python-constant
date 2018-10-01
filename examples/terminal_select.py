@@ -46,3 +46,8 @@ print('\nSelected index: %s' % aircraft_type_inx)
 print('Selected AircraftType value: %s' % aircraft_type_value)
 print('Selected AircraftType title: %s' % aircraft_type_title)
 print('Selected AircraftType description: %s' % aircraft_type_description)
+
+# Selected index: 1
+# Selected AircraftType value: rotorcraft
+# Selected AircraftType title: Rotorcraft
+# Selected AircraftType description: Aircrafts which have (usually) two rotors, keeping them in the air, a.k.a helicopters

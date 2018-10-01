@@ -9,6 +9,8 @@ from py_constant import Constant
 
 class Aircraft():
 
+    # Some random defined class, just to set an example...
+
     def __init__(brand, model, type):
         pass
         ...
