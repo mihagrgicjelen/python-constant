@@ -8,39 +8,45 @@ class Constant(object):
     _constants = []
 
     @classmethod
+    def _cache_vals(cls):
+
+        # save attributes to _constants on first call
+        # so no iteration is needed later
+
+        attrs = []
+        for attr_name, attr in cls.__dict__.items():
+
+            # Constant class can also have nested constant classes
+            if inspect.isclass(attr):
+
+                try:
+                    attrs.extend(attr.get_all())
+
+                except AttributeError:
+                    raise AttributeError(
+                        'Constant class children should be Constant'
+                        'not object or some other type')
+            else:
+
+                if attr_name.isupper() and not attr_name.startswith('__'):
+                    attrs.append(attr)
+
+        cls._constants = attrs
+        
+    @classmethod
     def get_all(cls):
 
-        # if you need orderging of get_all() results, override this method
-
         if not cls._constants:
+            cls._cache_vals()
 
-            # save attributes to _constants on first call
-            # so no iteration is needed later
-
-            attrs = []
-            for attr_name, attr in cls.__dict__.items():
-
-                # Constant class can also have nested constant classes
-                if inspect.isclass(attr):
-
-                    try:
-                        attrs.extend(attr.get_all())
-
-                    except AttributeError:
-                        raise AttributeError(
-                            'Constant class children should be Constant'
-                            'not object or some other type')
-                else:
-
-                    if attr_name.isupper() and not attr_name.startswith('__'):
-                        attrs.append(attr)
-
-            cls._constants = attrs
-
+        # if you need orderging of get_all() results, override this method
         return cls._constants
 
     @classmethod
     def __get_val(cls, val, attr):
+
+        if not cls._constants:
+            cls._cache_vals()
 
         if val not in cls.__dict__['_constants']:
             raise AttributeError('Constant class "%s" has no attribute "%s"' % (cls.__name__, val))
