@@ -42,24 +42,22 @@ class Constant(object):
     @classmethod
     def __get_val(cls, val, attr):
 
+        if val not in cls.__dict__['_constants']:
+            raise AttributeError('Constant class "%s" has no attribute "%s"' % (cls.__name__, val))
+
         try:
             return getattr(cls, attr)[val]
-
-        except AttributeError:
-            raise AttributeError('Attribute "%s" not defined on Constant "%s"' % (
-                attr, cls.__name__))
-
         except KeyError:
             raise KeyError('Constant "%s.%s" missing requested key "%s"' % (
                 cls.__name__, attr, val))
 
     @classmethod
     def get_title(cls, val, short=False):
-        return cls.__get_val(val, '_short_titles' if short else '_titles')
+        return unicode(cls.__get_val(val, '_short_titles' if short else '_titles'))
 
     @classmethod
     def get_description(cls, val):
-        return cls.__get_val(val, '_descriptions')
+        return unicode(cls.__get_val(val, '_descriptions'))
 
     @classmethod
     def get_all_constants(cls):
