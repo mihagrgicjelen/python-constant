@@ -59,11 +59,11 @@ class Constant(object):
 
     @classmethod
     def get_title(cls, val, short=False):
-        return unicode(cls.__get_val(val, '_short_titles' if short else '_titles'))
+        return cls.__get_val(val, '_short_titles' if short else '_titles')
 
     @classmethod
     def get_description(cls, val):
-        return unicode(cls.__get_val(val, '_descriptions'))
+        return cls.__get_val(val, '_descriptions')
 
     @classmethod
     def get_all_constants(cls):
