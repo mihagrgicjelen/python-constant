@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='py_constant',
-    version='1.3',
+    version='1.4',
     packages=['py_constant',],
     license='Creative Commons Attribution-Noncommercial-Share Alike license',
     long_description=open('README.txt').read(),
