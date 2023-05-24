@@ -117,3 +117,13 @@ class Constant(object):
             raise Exception(
                 'Probably no get_all() or get_title() '
                 'implemented for %s (%s)' % (cls, e))
+
+    @classmethod
+    def to_django_choices(cls):
+        try:
+            return [(x, cls.get_title(x)) for x in cls.get_all()]
+
+        except AttributeError as e:
+            raise Exception(
+                'Probably no get_all() or get_title() '
+                'implemented for %s (%s)' % (cls, e))
